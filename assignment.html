@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    li {
+      padding: 10px;
+      font-size: 18px;
+      background-color: lightgray;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background-color: rgb(130, 186, 91);
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #box {
+      width: 150px;
+      height: 150px;
+      padding: 25px;
+      border: 3px solid rgb(84, 84, 84);
+      margin: 25px;
+      background-color: lightgray;
+      box-sizing: border-box; 
+    }
+
+    #box:hover {
+      border-color: rgb(130, 186, 91);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PART 1 -->
+  <script>
+    function calculateArea(width, height) {
+      if (isNaN(width) || width <= 0 || isNaN(height) || height <= 0) {
+        console.log("Invalid input, Please enter positive numbers.");
+        return;
+      }
+
+      const area = width * height;
+      console.log("Area: " + area);
+      return area;
+    }
+
+    calculateArea(5, 5);
+  </script>
+
+  <!-- PART 2 -->
+  <h1>Part 2: Button Click Event</h1>
+  <button id="myButton">Click Me</button>
+
+  <script>
+    function handleClick() {
+      alert("Button clicked!");
+      let randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+      document.getElementById("myButton").style.backgroundColor = randomColor;
+    }
+
+    document.getElementById("myButton").addEventListener("click", handleClick);
+  </script>
+
+  <!-- PART 3 -->
+  <h2>Part 3: Manipulating the DOM</h2>
+  <ul id="myList">
+    <li>1st item</li>
+    <li>2nd item</li>
+    <li>3rd item</li>
+  </ul>
+
+  <script>
+    let ul = document.getElementById('myList');
+    let newItem = document.createElement('li');
+    newItem.textContent = "Fourth item";
+    ul.appendChild(newItem);
+
+    function getRandomString() {
+      return Math.random().toString(36).substring(2, 20);
+    }
+
+    ul.addEventListener('click', function(e) {
+      if (e.target.tagName === 'LI') {
+        e.target.textContent = getRandomString();
+      }
+    });
+  </script>
+
+  <!-- PART 4 -->
+  <h3>Part 4: CSS Box Model</h3>
+  <div id="box">Click Me</div>
+
+  <script>
+    const box = document.getElementById('box');
+
+    box.addEventListener('click', function() {
+      let randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+      box.style.backgroundColor = randomColor;
+    });
+  </script>
+
+</body>
+</html>
